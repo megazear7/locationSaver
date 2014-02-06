@@ -8,7 +8,33 @@
 </head>
 <body>
 
-<%= yield %>
+<div class="center">
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+</div>
+
+<div class="center">
+  <%= yield %>
+</div>
+
+<hr />
+
+<% if user_signed_in? %>
+  <div class="center">
+    <br/>
+    <%= link_to("View Colombus Listing", private_path, :method => :get) %> |
+    <%= link_to("Your Profile", user_path(@user), :method => :get) %> |
+    <%= link_to("Logged in as: #{@user.email}", edit_user_registration_path, :method => :get) %> |
+    <%= link_to("Logout", destroy_user_session_path, :method => :delete) %> | 
+    <%= link_to("Public Page", root_path, :method => :get) %>
+  </div>
+<% else %>
+  <div class="center">
+    <%= link_to("Log in", new_user_session_path, :method => :get) %>
+    or
+    <%= link_to("Sign up", new_user_registration_path, :method => :get) %>
+  </div>
+<% end %>
 
 </body>
 </html>

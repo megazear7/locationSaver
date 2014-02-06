@@ -1,0 +1,15 @@
+<h1>Your Places</h1>
+<br/>
+
+<% @user.places.each do |p| %>
+  <a href="/private/temp?name=<%= p.title %>&url=<%= p.icon_url %>" class="entry_container">
+    <img src="<%= p.icon_url %>" class="place_icon"></img>
+    <h2 class="entry_title"><%= p.title %></h2>
+  </a>
+  <%= link_to "Delete", place_path(p), :method => :delete, :confirm => "Are you sure?" %>
+  <br/>
+  <hr/>
+<% end %>
+
+<hr />
+<%= link_to("Create A new Place", new_place_path, :method => :get) %>

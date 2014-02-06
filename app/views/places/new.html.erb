@@ -1,0 +1,13 @@
+<h1>Create A New Place</h1>
+
+<%= form_for @place do |p| %>
+
+  <%= p.label :title %>
+  <%= p.text_field :title %>
+
+  <%= p.label :icon_url %>
+  <%= p.text_field :icon_url %>
+
+  <%= p.submit %>
+
+<% end %>

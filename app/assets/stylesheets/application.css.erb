@@ -1,0 +1,56 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+
+.entry_title {
+	position:absolute;
+	left:100px;
+	top:15px;
+}
+
+.entry_container:hover {
+	background: rgb(236, 197, 150);
+	border-color:#F3AF5E;
+}
+
+.entry_container {
+	-moz-transition: all .25s ease-in;
+	-webkit-transition: all .25s ease-in;
+	-o-transition: all .25s ease-in;
+	transition: all .25s ease-in;
+	position:relative;
+	padding: 15px;
+	background-color: #80C3D8;
+	border-radius: 15px;
+	margin: auto;
+	border-width:5px;
+	border-style:solid;
+	border-color:rgb(250, 224, 193);
+	display:block;
+	text-decoration:none;
+	color: black;
+}
+
+html,body {
+	background:#fff url(<%= asset_path 'old_map.png' %>);
+}
+
+.center {
+	margin:auto;
+	width:700px;
+}
+
+.place_icon {
+  width: 71px;
+  height: 71px;
+}

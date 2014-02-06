@@ -1,0 +1,14 @@
+<%= link_to("Back To Colombus Listings Page", private_path, :method => :get) %>
+<br/>
+<br/>
+
+<h1><%= @place.title %></h1>
+
+<% if @paragraph %>
+  <p><%= @paragraph %></p>
+<% else %>
+  <p>No Paragraph Found</p>
+<% end %>
+
+<br />
+<%= link_to "Add to My Places", places_scratch_path(title: @place.title, icon_url: @place.icon_url), :method => :get %>

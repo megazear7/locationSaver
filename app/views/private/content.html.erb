@@ -1,0 +1,15 @@
+<h1>Columbus Places</h1>
+<br/>
+
+<% @results.each do |x| %>
+  <a href="/private/temp?name=<%= x.title %>&url=<%= x.icon_url %>" class="entry_container">
+    <img src="<%= x.icon_url %>" class="place_icon"></img>
+    <h2 class="entry_title"><%= x.title %></h2>
+  </a>
+  <%= link_to "Add to My Places", places_scratch_path(title: x.title, icon_url: x.icon_url), :method => :get %>
+  <br/>
+  <hr/>
+<% end %>
+
+<%= will_paginate @results %>
+<br />
