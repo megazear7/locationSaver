@@ -54,7 +54,15 @@ gem "httparty"
 gem "json"
 
 # Use will paginate to paginate data
-gem 'will_paginate', '~> 3.0.5'
+gem "will_paginate", "~> 3.0.5"
 
-# Use protected attributes
-# gem 'protected_attributes'
+# Use Factory Girl for testing
+gem "factory_girl_rails" , "~> 4.0"
+
+gem "rspec-rails", :group => [:development, :test]
+
+gem "database_cleaner", :group => :test
+
+gem "capybara"
+
+gem "capybara"
