@@ -65,4 +65,6 @@ gem "database_cleaner", :group => :test
 
 gem "capybara"
 
-gem "capybara"
+gem "rails-i18n", "~> 4.0.1"
+
+gem "i18n", "~> 0.6.9"

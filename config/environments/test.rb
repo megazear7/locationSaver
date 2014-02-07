@@ -31,6 +31,7 @@ LocationSaver::Application.configure do
   # ActionMailer::Base.deliveries array.
   config.action_mailer.delivery_method = :test
 
+  # without these lines Capybara navigates to "www.example.com" by default 
   Capybara.run_server = true 
   Capybara.server_port = 7000
   Capybara.app_host = "http://localhost:#{Capybara.server_port}"

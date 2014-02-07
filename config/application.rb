@@ -19,6 +19,10 @@ module LocationSaver
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+    # the following line should not be needed. However it supresses a warning
+    # that I have been unable to fix. The reason for this is the same reason
+    # that I set Capybara run_server server_port and app_host in config/enviroments/test.rb
+    config.i18n.enforce_available_locales = true
 
     config.generators do |g|
       g.test_framework :rspec, fixture: true
