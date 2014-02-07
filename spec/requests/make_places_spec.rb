@@ -17,15 +17,19 @@ describe "MakePlaces", :type => :feature do
     fill_in "Title", :with => "Test Title"
     fill_in "Icon url", :with => "www.example_icon_url.com"
     click_button "Create Place"
+    Place.where(:title => "Test Title").should exist
   end
 
   it "creates a new place for the user" do
     user = create(:user)
     login_as(user, :scope => :user)
     visit new_place_path
-    fill_in "Title", :with => "Test Title"
+    title = "Test Title"
+    fill_in "Title", :with => title
     fill_in "Icon url", :with => "www.example_icon_url.com"
     click_button "Create Place"
+    page.should have_selector('h2', title)
+    Place.where(:title => "Test Title").should exist
   end
 
   it "goes to the private page and adds place from the list" do
@@ -33,8 +37,10 @@ describe "MakePlaces", :type => :feature do
     login_as(user, :scope => :user)
     visit private_path
     # use capybara to store the name of the link, then check that it is on the next page
-    puts first(:link, "Add to My Places")
+    #title = first(:link, ".entry_container").find(:h2).text
+    title = first(:link).find('h2').text
     first(:link, "Add to My Places").click
-    page.should have_selector(:link, "Delete")
+    page.should have_selector('h2', title)
+    Place.where(:title => title).should exist
   end
 end
