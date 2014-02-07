@@ -6,7 +6,7 @@
     <img src="<%= p.icon_url %>" class="place_icon"></img>
     <h2 class="entry_title"><%= p.title %></h2>
   </a>
-  <%= link_to "Delete", place_path(p), :method => :delete, :confirm => "Are you sure?" %>
+  <%= link_to "Delete", place_path(p), :method => :delete, :data => { confirm: "Are you sure?" } %>
   <br/>
   <hr/>
 <% end %>

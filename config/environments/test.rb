@@ -31,6 +31,10 @@ LocationSaver::Application.configure do
   # ActionMailer::Base.deliveries array.
   config.action_mailer.delivery_method = :test
 
+  Capybara.run_server = true 
+  Capybara.server_port = 7000
+  Capybara.app_host = "http://localhost:#{Capybara.server_port}"
+
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
 
