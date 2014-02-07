@@ -32,7 +32,9 @@ describe "MakePlaces", :type => :feature do
     user = create(:user)
     login_as(user, :scope => :user)
     visit private_path
+    # use capybara to store the name of the link, then check that it is on the next page
+    puts first(:link, "Add to My Places")
     first(:link, "Add to My Places").click
+    page.should have_selector(:link, "Delete")
   end
-
 end
