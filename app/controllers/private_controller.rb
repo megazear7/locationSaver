@@ -14,7 +14,6 @@ class PrivateController < ApplicationController
   	end
 
   	@results = @list.paginate(page: params[:page], per_page: 5)
-  	render "content"
   end
 
   def item
