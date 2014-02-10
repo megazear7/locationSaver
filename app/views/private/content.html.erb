@@ -2,7 +2,7 @@
 <br/>
 
 <% @results.each do |x| %>
-  <a href="/private/temp?name=<%= x.title %>&url=<%= x.icon_url %>" id="place_button" class="entry_container">
+  <a href="/private/temp?name=<%= CGI::escape(x.title) %>&url=<%= x.icon_url %>" class="entry_container">
     <img src="<%= x.icon_url %>" class="place_icon"></img>
     <h2 class="entry_title"><%= x.title %></h2>
   </a>

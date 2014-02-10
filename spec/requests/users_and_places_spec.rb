@@ -42,6 +42,17 @@ describe "MakePlaces", :type => :feature do
     Place.where(:title => title).should exist
   end
 
+  it "goes to the private page, clicks on one of the options and adds the place from its place page" do
+    user = create(:user)
+    login_as(user, :scope => :user)
+    visit private_path
+    title = first(:link).find('h2').text
+    first(:link).click
+    click_link "Add to My Places"
+    page.should have_selector('h2', title)
+    Place.where(:title => title).should exist
+  end
+
   it "creates a user manually" do
     visit root_path
     click_link "Sign up"
@@ -50,6 +61,18 @@ describe "MakePlaces", :type => :feature do
     fill_in "Password confirmation", :with => "abcdefghi"
     click_button "Sign up"
     User.where(:email => "tester_manual@example.com").should exist
+  end
+
+  it "creates a user with places, then checks to see that all of those places are displayed on the user page" do
+    user = create(:user)
+    place1 = user.places.create(title: "Test1", icon_url: "example1.com")
+    place2 = user.places.create(title: "Test2", icon_url: "example2.com")
+    place3 = user.places.create(title: "Test3", icon_url: "example3.com")
+    login_as(user, :scope => :user)
+    visit user_path(user)
+    page.should have_selector('h2', place1)
+    page.should have_selector('h2', place2)
+    page.should have_selector('h2', place3)
   end
 
 end
