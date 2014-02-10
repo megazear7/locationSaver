@@ -18,7 +18,7 @@ class PrivateController < ApplicationController
 
   def item
     @user = current_user
-  	@place = Place.new(:title => params[:name], :icon_url => params[:icon_url])
+  	@place = Place.new(:title => params[:title], :icon_url => params[:icon_url])
 
     search = @place.title.gsub(/ /, '+')
     @content = HTTParty.get("http://www.google.com/search?h1=en&q=#{search}&btnI=I")	
